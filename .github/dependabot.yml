@@ -1,0 +1,45 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/docsort-backend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "05:00"
+      timezone: "UTC"
+    open-pull-requests-limit: 5
+    groups:
+      python-dependencies:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "pub"
+    directory: "/docsort"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "05:15"
+      timezone: "UTC"
+    open-pull-requests-limit: 5
+    groups:
+      flutter-dependencies:
+        patterns:
+          - "*"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: "docker"
+    directory: "/docsort-backend"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: "gradle"
+    directory: "/docsort/android"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 5

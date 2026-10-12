@@ -1,0 +1,90 @@
+DOCSORT - ANDROID APP ONLY
+Location: D:\Projects\DocSort
+
+==================================================
+STEP 1 - CONNECT ANDROID PHONE
+==================================================
+
+Enable Developer Options and USB Debugging on the phone.
+Connect the phone to the PC with USB.
+
+Check that the phone is detected:
+
+adb devices
+
+
+If the phone shows "unauthorized", unlock the phone and tap:
+Allow USB debugging
+
+
+==================================================
+TERMINAL 1 - START BACKEND
+==================================================
+
+cd D:\Projects\DocSort\docsort-backend
+.venv\Scripts\python.exe -m uvicorn app.main:app --reload --reload-exclude ".venv/*" --port 8000
+
+
+Keep Terminal 1 running.
+
+Backend:
+http://127.0.0.1:8000
+
+API Docs:
+http://127.0.0.1:8000/docs
+
+Ready Check:
+http://127.0.0.1:8000/ready
+
+
+==================================================
+TERMINAL 2 - CONNECT PHONE TO LOCAL BACKEND
+==================================================
+
+adb reverse tcp:8000 tcp:8000
+
+
+Optional check:
+
+adb reverse --list
+
+
+Keep the phone connected by USB.
+
+
+==================================================
+TERMINAL 3 - RUN FLUTTER ANDROID APP
+==================================================
+
+cd D:\Projects\DocSort\docsort
+flutter pub get
+flutter devices
+flutter run --dart-define=API_BASE_URL=http://127.0.0.1:8000
+
+
+If more than one device is connected, run:
+
+flutter run -d DEVICE_ID --dart-define=API_BASE_URL=http://127.0.0.1:8000
+
+
+Example:
+
+flutter run -d R58M123456 --dart-define=API_BASE_URL=http://127.0.0.1:8000
+
+
+==================================================
+STOP THE APP
+==================================================
+
+Press Ctrl+C in Terminal 3 to stop Flutter.
+
+Press Ctrl+C in Terminal 1 to stop the backend.
+
+
+==================================================
+IMPORTANT
+==================================================
+
+Run this again after reconnecting or restarting the Android phone:
+
+adb reverse tcp:8000 tcp:8000

@@ -1,0 +1,88 @@
+# GitHub/public repository safety (keep secrets and machine-specific files local)
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+**/local.properties
+**/key.properties
+**/google-services.json
+**/GoogleService-Info.plist
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+
+# Python, Flutter and Android generated caches
+.venv/
+.venv*/
+.gradle/
+.kotlin/
+.mypy_cache/
+.ruff_cache/
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Environment files
+.env
+*.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual env
+.venv/
+.venv*/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Flutter / Dart
+build/
+.dart_tool/
+
+# Node
+node_modules/
+# ── Local development artifacts ───────────────────────────────────
+# Transient debug / tool output
+*_out.txt
+adb_out.txt
+debug_log.txt
+*.log
+cols.txt
+
+# One-off data dumps
+docs.json
+docs_full.json
+folders.json
+
+# Flutter analyzer/lint dumps
+lints.txt
+analyze_out.txt
+# Test / coverage caches
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Local analyzer output
+analyze_output.txt
+# Academic evaluation inputs/results may contain document text or identifiers.
+docsort-backend/evaluation/data/
+docsort-backend/evaluation/results/

@@ -1,0 +1,36 @@
+name: docsort
+description: "Flutter client for the DocSort intelligent document processing system."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.1
+
+dependencies:
+  cunning_document_scanner: 1.4.0
+  cupertino_icons: 1.0.9
+  dio: 5.9.2
+  file_picker: 10.3.10
+  fl_chart: 1.2.0
+  flutter:
+    sdk: flutter
+  flutter_riverpod: 3.3.1
+  flutter_secure_storage: 10.0.0
+  go_router: 17.1.0
+  jwt_decoder: 2.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: 6.0.0
+  flutter_launcher_icons: 0.14.4
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/docsort_logo.png"

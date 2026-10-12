@@ -1,0 +1,5 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Local development may use http://127.0.0.1:8000 via adb reverse.
+         Release builds inherit the secure platform default and require HTTPS. -->
+    <application android:usesCleartextTraffic="true" />
+</manifest>

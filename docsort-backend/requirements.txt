@@ -1,0 +1,33 @@
+# ── Web framework ────────────────────────────────────────────────
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.29,<1.0
+pydantic[email]>=2.6,<3.0
+pydantic-settings>=2.2,<3.0
+python-dotenv>=1.0,<2.0
+
+# ── Auth ─────────────────────────────────────────────────────────
+# Authentication uses PyJWT (app/core/security.py: `import jwt`) and bcrypt directly.
+PyJWT>=2.13,<3.0
+bcrypt>=4.1,<5.0
+
+# ── HTTP (Supabase REST client) ──────────────────────────────────
+httpx>=0.27,<1.0
+
+# ── File upload ──────────────────────────────────────────────────
+python-multipart>=0.0.31,<1.0
+
+# ── OCR ──────────────────────────────────────────────────────────
+pytesseract>=0.3.10
+Pillow>=10.0
+pymupdf>=1.24
+
+# ── AI ───────────────────────────────────────────────────────────
+# Official Google GenAI SDK. DocSort uses the Gemini Interactions API with
+# structured JSON output and multimodal OCR-text + rendered-page input.
+google-genai>=2.24,<3.0
+
+# ── Security / rate limit ────────────────────────────────────────
+slowapi>=0.1.9
+
+# ── Date parsing for optional People Map identity matching ───────
+python-dateutil>=2.9

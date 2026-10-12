@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://docsort.local/evaluation/evaluation_record.schema.json",
+  "title": "DocSort Evaluation Record",
+  "description": "One labelled document evaluation record. This schema defines evidence fields only; it does not contain evaluation results.",
+  "type": "object",
+  "required": [
+    "id",
+    "ground_truth",
+    "prediction"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ground_truth": {
+      "$ref": "#/$defs/documentSnapshot"
+    },
+    "prediction": {
+      "$ref": "#/$defs/documentSnapshot"
+    },
+    "reviewed": {
+      "$ref": "#/$defs/documentSnapshot"
+    },
+    "timings": {
+      "type": "object",
+      "properties": {
+        "processing_ms": {
+          "type": "number",
+          "minimum": 0
+        },
+        "duplicate_reused": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "field": {
+      "type": "object",
+      "required": [
+        "label",
+        "value"
+      ],
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "value": {
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "documentSnapshot": {
+      "type": "object",
+      "properties": {
+        "doc_type": {
+          "type": "string"
+        },
+        "raw_text": {
+          "type": "string"
+        },
+        "fields": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "number",
+                  "boolean",
+                  "null"
+                ]
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/field"
+              }
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
