@@ -1,5 +1,5 @@
 # DocSort backend — FastAPI + OCR
-FROM python:3.11-slim
+FROM python:3.14-slim
 
 # System dependencies: Tesseract OCR with Marathi + Hindi language data
 # (English ships by default). Needed for the document-reading pipeline.
