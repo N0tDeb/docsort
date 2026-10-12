@@ -631,7 +631,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                             if (authState.isAdmin) const SizedBox(width: 24),
                             if (authState.isAdmin)
                               _buildQuickAction(
-                                'People Map ÃŽÂ²',
+                                'People Map β',
                                 Icons.account_tree_outlined,
                                 '/graph',
                               ),

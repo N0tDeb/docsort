@@ -1,5 +1,6 @@
 """Regression tests for findings discovered during the project-wide CHANGE AUDIT."""
 import asyncio
+import re
 from pathlib import Path
 
 import pytest
@@ -272,7 +273,10 @@ def test_global_analytics_is_admin_only_and_flutter_members_use_department_stats
     flutter = (ROOT.parent / "docsort/lib/features/analytics/presentation/screens/analytics_screen.dart").read_text(encoding="utf-8")
 
     assert "user: dict = Depends(get_current_admin)" in backend
-    assert "authState.isAdmin ? ref.watch(analyticsGlobalProvider) : null" in flutter
+    assert re.search(
+        r"authState\.isAdmin\s*\?\s*ref\.watch\(analyticsGlobalProvider\)\s*:\s*null",
+        flutter,
+    )
     assert "quickStatsAsync = globalAsync ?? deptAsync" in flutter
 
 
