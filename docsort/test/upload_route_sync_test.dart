@@ -3,13 +3,17 @@
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  test('single-file upload enters processing with URL-synchronizing navigation', () {
+  test('single-file upload enters processing with a recoverable job URL', () {
     final source = File(
       'lib/features/upload/presentation/screens/upload_screen.dart',
     ).readAsStringSync();
 
-    expect(source, isNot(contains("context.push('/processing')")));
-    expect(source, contains("context.go('/processing')"));
+    // The processing URL carries its encoded job ID for refresh/deep links.
+    expect(
+      source,
+      contains("context.go('/processing?job=\${Uri.encodeQueryComponent(jobId)}')"),
+    );
+    expect(source, isNot(contains("context.push('/processing")));
   });
 
   test('processing completion enters review with URL-synchronizing navigation', () {

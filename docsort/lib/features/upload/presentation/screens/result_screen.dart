@@ -172,7 +172,7 @@ class ResultScreen extends ConsumerWidget {
                       : 'Review & Verify',
                   onPressed: () => reviewStatus == 'verified'
                       ? _openCabinet(context)
-                      : context.push(_reviewRoute(documentId)),
+                      : context.go(_reviewRoute(documentId)),
                 ),
                 if (reviewStatus == 'verified') ...[
                   const SizedBox(height: 12),

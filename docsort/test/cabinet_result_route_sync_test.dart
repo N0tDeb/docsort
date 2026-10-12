@@ -3,19 +3,14 @@
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  test('cabinet document tap uses URL-synchronizing Result navigation', () {
+  test('cabinet document tap preserves return location in Result URL', () {
     final source = File(
       'lib/features/cabinet/presentation/screens/cabinet_detail_screen.dart',
     ).readAsStringSync();
 
-    expect(
-      source,
-      isNot(contains("context\r\n                      .push('/result/\$docId')")),
-    );
-
-    expect(
-      source,
-      contains("context\r\n                      .go('/result/\$docId')"),
-    );
+    // Allow Flutter formatting changes while enforcing URL-aware navigation.
+    expect(source, contains(".go('/result/\$docId?from="));
+    expect(source, contains('Uri.encodeComponent("/cabinet/'));
+    expect(source, isNot(contains(".push('/result/\$docId")));
   });
 }

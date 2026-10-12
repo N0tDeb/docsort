@@ -8,14 +8,9 @@ void main() {
       'lib/features/upload/presentation/screens/result_screen.dart',
     ).readAsStringSync();
 
-    expect(
-      source,
-      isNot(contains("context.push('/review/\$documentId')")),
-    );
-
-    expect(
-      source,
-      contains("context.go('/review/\$documentId')"),
-    );
+    // Review routes include an encoded return path so browser history works.
+    expect(source, contains("return '/review/\$documentId?from="));
+    expect(source, contains('context.go(_reviewRoute(documentId))'));
+    expect(source, isNot(contains('context.push(_reviewRoute(documentId))')));
   });
 }
